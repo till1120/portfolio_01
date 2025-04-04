@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<script>
+//////////////////////////////////////////////////////////////////////
+//
+//	 Title			：3Dまるばつゲーム
+//	 Filename		：portfolio1_marubatsu.html
+//	 Abstract		：まるばつゲームを3D化したもの
+//
+//////////////////////////////////////////////////////////////////////
+</script>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/table.css">
+	<script src="js/three.js"></script>
+	<script src="js/main.js"></script>
+	<script src="https://unpkg.com/three@0.137.4/examples/js/controls/OrbitControls.js"></script>
+	<title>3Dマルバツゲーム</title>
+</head>
+<body>
+    <div id="pagebody">
+        <!-- ヘッダー＆メインメニュー -->
+        <ul id="menu">
+            <li><h1><a href="index.html">ポートフォリオ<br>home</a></h1></li>
+            <li><h2><a href="index.html#skill_overview">スキル概要<br>(できること)</a></h2></li>
+            <li><h2><a class="this_page" href="portfolio1_marubatsu.html">3Dマルバツゲーム<br>(JavaScript,three.js)</a></h2></li>
+            <li><h2><a href="portfolio2_AI_illust.html">AIイラスト<br>(Stable Diffusion)</a></h2></li>
+            <li><h2><a>シューティングゲーム</a></h2></li>
+            <li><h2><a>3Dアクションゲーム</a></h2></li>
+            <li><h2></h2></li>
+            <li><h2></h2></li>
+            <hr>
+        </ul>
+        <!-- メインコンテンツ -->
+        <h3 id="marubatsu_h3">・3Dマルバツゲーム</h3>
+        <div id="marubatsu_game">
+			<button id="audio">音楽再生▶</button>
+			<p id="state">ゲームの状態を表示する予定</p>
+			<canvas id="draw3D">
+				<script>
+					//ゲーム実行
+					play_game()
+				</script>
+			</canvas>	
+            <table class="marubatsu">
+                <tr>
+                    <th>
+                        遊び方
+                    </th>
+                    <td>
+                        ・◯（☓）を置きたい場所をクリックまたはタップしてください。<br>
+                        ・「音楽再生」ボタンを押せばmusicとSEが流れます。<br>
+                        ・「勝ち」「負け」「引き分け」の後、再戦したい場合は音楽再生ボタンの右側のテキストをクリックまたはタップしてください。
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        注意事項
+                    </th>
+                    <td>
+                        ・性能の悪いPCやスマホだと処理が重いかもしれません。<br>
+                        ・カメラを動かせますが、勝手に◯が置かれたり、座標がずれたりします。<br>
+                        　画面がおかしくなったら、F5キーを押して更新してください。
+                    </td>
+                </tr>
+            </table>
+            <table class="default">
+                <tr>
+                    <th>
+                        使用言語
+                    </th>
+                    <td>
+                        HTML・CSS・JavaScript
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        使用ライブラリ
+                    </th>
+                    <td>
+                        Three.js（3D描画に特化した商用利用可能なJavaScriptライブラリ）
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        制作期間
+                    </th>
+                    <td>
+                        1週間+休憩時間や昼休み時間
+                    </td>
+                </tr>
+                <th>
+                    開発経緯
+                </th>
+                <td>
+                    求職者支援訓練でJavaScriptプログラミング演習終了時の課題で制作しました。<br>
+                    制作期間が1週間と短めだったので、簡単そうなマルバツゲームを作ろうと考えました。<br>
+                    <br>
+                    3Dについては、昔C++とDirectX（3D描画に利用したライブラリ）で3Dゲームを制作したことがあり、3Dに関する基本的な知識（三次元座標、レンダリング等）はありました。<br>
+                    JavaScriptにも3D描画用のライブラリがあるだろうと検索したところ、3Dを簡単に描画できる「Three.js」が見つかりました。<br>
+                    <br>
+                    作業は以下の手順で進めました。<br>
+                    （※🔵は実装済、❌は未実装）<br>
+                    ①「マルバツゲーム設計」<br>
+                    🔵マルバツゲームに必要な要素洗い出し<br>
+                    🔵html、JavaScriptファイル作成<br>
+                    🔵Three.js読み込み、canvas要素作成<br>
+                    🔵クラス設計<br>
+                    🔵canvas要素とクラスオブジェクトの連携<br>
+                    <br>
+                    ②「最低限の3D表示」<br>
+                    🔵レンダラー、シーン、カメラ、光源、オブジェクト（マル等）作成<br>
+                    🔵上記をクラスコンストラクタ内で初期化、実装<br>
+                    <br>
+                    ③「マルバツゲームに必要な基本要素実装」<br>
+                    🔵マルやバツを置く処理<br>
+                    🔵マルやバツが置いてある場所には置けない<br>
+                    🔵勝利判定<br>
+                    <br>
+                    ④「追加で機能を実装」<br>
+                    🔵◯と☓を回転させる<br>
+                    🔵光源がグルグル回っている<br>
+                    🔵影を付ける<br>
+                    ❌モデルクラス実装<br>
+                    🔵マウスが乗っているマスを光らせる<br>
+                    ❌プレイヤークラス実装<br>
+                    ❌先行後攻決め<br>
+                    ❌CPU実装（easy、normal、hardの3段階）<br>
+                    🔵音楽（musicとSE）再生ボタン設置<br>
+                    🔵再戦処理<br>
+                    🔵カメラを動かす<br>
+                    <br>
+                    ゲームに必要な①②③を終わらせてから、④の追加で機能を実装という形を取りました。
+                    <br>
+                    作業中に一番苦労した点は、「HTMLのcanvasタグの座標」と「3D上の座標」を関連付けすることでした。<br>
+                    canvasタグの左上の座標が「X:0,Y:0」なのに対し、3D上では画面の中心が「X:0,Z（2次元上でのY軸）:0」だったので、整合性をとるのが大変でした。
+                </td>
+            </table>
+		</div>
+
+	</div>
+    <!-- フッタ -->
+    <div id="footer">
+        <small>Copyright (c) 佐々木　友紀 All Rights Reserved.</small>
+    </div>
+</body>
+</html>
